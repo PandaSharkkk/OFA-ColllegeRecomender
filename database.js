@@ -39,6 +39,8 @@ function fetchItemsPage(itemResultElement, offset) {
                 var selectElement6 = document.getElementById("myRange3");
                 var selectedValue6 = (selectElement6.value);
 
+                console.log("hellow world");
+
                 if (Location == selectedValue && Size == selectedValue2 && Setting == selectedValue3 && Acceptance > selectedValue4 && GPA <= selectedValue5 && SAT <= selectedValue6) { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
                     console.log(data.records[p].fields["Name"]); //Logs all of the names of the schools that matches the users preferences
                     matchedColleges += data.records[p].fields["Name"] + "<br>"; // Add the users matched college names to the string                
