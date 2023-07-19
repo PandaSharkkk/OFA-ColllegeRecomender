@@ -18,7 +18,7 @@ function fetchItemsPage(itemResultElement, offset) {
                 var SAT = data.records[p].fields["Average SAT"];
                 var Size = data.records[p].fields["Size"];
                 var Setting = data.records[p].fields["Campus setting"];
-                var Acceptance = parseFloat(data.records[p].fields["Acceptance Rate"]);
+                var Acceptance = (data.records[p].fields["Acceptance Rate"]);
 
                 var selectElement = document.getElementById("Location"); //Calling the user inputed value from the preferences page in HTMl
                 var selectedValue = selectElement.value; //Assigning it as a variable
@@ -38,7 +38,7 @@ function fetchItemsPage(itemResultElement, offset) {
                 var selectElement6 = document.getElementById("myRange3");
                 var selectedValue6 = (selectElement6.value);
 
-                if (Location == selectedValue && Size == selectedValue2 && Setting == selectedValue3 && Acceptance < selectedValue4 && GPA <= selectedValue5 && SAT <= selectedValue6) { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
+                if (Location == selectedValue && Size == selectedValue2 && Setting == selectedValue3 && Acceptance > selectedValue4 && GPA <= selectedValue5 && SAT <= selectedValue6) { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
                     console.log(data.records[p].fields["Name"]); //Logs all of the names of the schools that matches the users preferences
                     matchedColleges += data.records[p].fields["Name"] + "<br>"; // Add the users matched college names to the string                
 
