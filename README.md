@@ -1,1 +1,1 @@
-# OFA-ColllegeRecomender
+# OFA-CollegeRecomender
