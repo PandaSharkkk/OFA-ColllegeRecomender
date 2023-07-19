@@ -40,8 +40,8 @@ function fetchItemsPage(itemResultElement, offset) {
                 var selectedValue6 = (selectElement6.value);
 
                 if((selectedValue == "N/A" || Location == selectedValue) &&
-                    Size == selectedValue2 &&
-                    Setting == selectedValue3 &&
+                    (Size == selectedValue2 || selectedValue2 == "N/A") &&
+                    (Setting == selectedValue3|| selectedValue3 == "N/A") &&
                     Acceptance > selectedValue4 &&
                     GPA <= selectedValue5 &&
                     SAT <= selectedValue6) { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
