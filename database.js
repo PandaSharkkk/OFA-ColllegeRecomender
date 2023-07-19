@@ -10,6 +10,7 @@ function fetchItemsPage(itemResultElement, offset) {
             console.log(data);//These 4 lines call the database and then display the data in the console
 
             var matchedColleges = ""; //Makes this variable have no words
+            var matchedColleges2 = "No colleges match your search";
 
             for (var p = 0; p < data.records.length; p++) { //Goes through every value in the database
                 var Name = data.records[p].fields["Name"]; //All of these are just defining collumn from our database as variables
@@ -41,11 +42,12 @@ function fetchItemsPage(itemResultElement, offset) {
                 if (Location == selectedValue && Size == selectedValue2 && Setting == selectedValue3 && Acceptance > selectedValue4 && GPA <= selectedValue5 && SAT <= selectedValue6) { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
                     console.log(data.records[p].fields["Name"]); //Logs all of the names of the schools that matches the users preferences
                     matchedColleges += data.records[p].fields["Name"] + "<br>"; // Add the users matched college names to the string                
-
+                    matchedColleges2 = "";
                 }
             }
             
             document.getElementById("Match").innerHTML = matchedColleges; // Display the list of matched colleges
+            document.getElementById("Match2").innerHTML = matchedColleges2;
 
             if (data.offset) { //Applies to if their is 100 or more data points in the database
                 offset = `offset=${data.offset}`;
@@ -55,5 +57,7 @@ function fetchItemsPage(itemResultElement, offset) {
             itemList = itemList.concat(data.records); //list the data
         });
 }
+
+
 
 fetchItemsPage();
