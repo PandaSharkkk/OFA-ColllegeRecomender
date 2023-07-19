@@ -12,16 +12,19 @@
         <option>So Cal</option>
         <option>Nor Cal</option><!--These options must be identical to the tags in the data base-->
         <option>Central Cal</option>
+        <option>N/A</option>
     </select>
     <select id="Size"> <!--Same as above just for size of the school-->
         <option>Small (Less than 2500)</option>
         <option>Medium (2500-15000)</option>
         <option>Large (15000+)</option>
+        <option>N/A</option>
     </select>
     <select id="Setting"> <!--Same as above just for campus setting-->
         <option>City</option>
         <option>Rural</option>
         <option>College Town</option>
+        <option>N/A</option>
     </select>
 
     <div class="slidecontainer"> <!--Creates a sliding for the maximum acceptance rate at a school ie if I want a school with a 50% acceptance rate it will give me all the schools that are at max a 50% acceptance-->
@@ -72,5 +75,6 @@
     <button onclick="fetchItemsPage();">Search</button> <!--This button runs the javascript function that checks all of the parameters-->
 
     <p id="Match"></p> <!--THis is where the matched colleges will display-->
+    <p id="Match2"></p>
 </body>
 </html>
