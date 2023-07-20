@@ -1,80 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preferences</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <script src="database.js"></script> <!--links the script-->
-    <select id="Location"> <!--lMakes a drop box of all of the locations of the schools-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="database.js"></script>
+    <!--links the script-->
+    <div class="content-wrapper">
+      <h1 id="title_preferences">
+        Adjust your preferences below and click search!
+      </h1>
+      <select id="Location">
+        <!--lMakes a drop box of all of the locations of the schools-->
         <option>So Cal</option>
-        <option>Nor Cal</option><!--These options must be identical to the tags in the data base-->
+        <option>Nor Cal</option>
+        <!--These options must be identical to the tags in the data base-->
         <option>Central Cal</option>
         <option>N/A</option>
-    </select>
-    <select id="Size"> <!--Same as above just for size of the school-->
+      </select>
+      <select id="Size">
+        <!--Same as above just for size of the school-->
         <option>Small (Less than 2500)</option>
         <option>Medium (2500-15000)</option>
         <option>Large (15000+)</option>
         <option>N/A</option>
-    </select>
-    <select id="Setting"> <!--Same as above just for campus setting-->
+      </select>
+      <select id="Setting">
+        <!--Same as above just for campus setting-->
         <option>City</option>
         <option>Rural</option>
         <option>College Town</option>
         <option>N/A</option>
-    </select>
+      </select>
 
-    <div class="slidecontainer"> <!--Creates a sliding for the maximum acceptance rate at a school ie if I want a school with a 50% acceptance rate it will give me all the schools that are at max a 50% acceptance-->
-        <input type="range" min="0" max="1" value=".5" step=".01" class="slider" id="myRange">
-        <p>Acceptance Rate (Max): <span id="demo"></span></p>
+      <div class="slidecontainer">
+        <!--Creates a sliding for the maximum acceptance rate at a school ie if I want a school with a 50% acceptance rate it will give me all the schools that are at max a 50% acceptance-->
+        <p id="acceptance_text slider_options">
+          Acceptance Rate (Max): <span id="demo"></span>
+        </p>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          value=".5"
+          step=".01"
+          class="slider"
+          id="myRange"
+        />
+      </div>
+
+      <script>
+        var slider = document.getElementById("myRange"); //Gets the values that the user is putting in on the slider and defines them
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value * 100; //The slider value will be in decimals because thats what it is on the table. This makes them whole numbers
+
+        slider.oninput = function () {
+          output.innerHTML = this.value * 100; //This function outputs the constant value the slider is on to the webpage
+        };
+      </script>
+
+      <div class="slidecontainer2">
+        <!--This is the exact same thing just for a GPA requirnment. You input your GPA and see if you meet certain schools GPA requrinments-->
+        <p id="slider_options">GPA (Your GPA): <span id="demo2"></span></p>
+        <input
+          type="range"
+          min="2"
+          max="5"
+          value="3.5"
+          step=".01"
+          class="slider2"
+          id="myRange2"
+        />
+      </div>
+
+      <script>
+        var slider2 = document.getElementById("myRange2");
+        var output2 = document.getElementById("demo2");
+        output2.innerHTML = slider2.value;
+
+        slider2.oninput = function () {
+          output2.innerHTML = this.value;
+        };
+      </script>
+
+      <div class="slidecontainer3">
+        <!--This is the same thing but for your SAT scores-->
+        <p id="slider_options">SAT (Your SAT): <span id="demo3"></span></p>
+        <input
+          type="range"
+          min="1000"
+          max="1600"
+          value="1200"
+          step="10"
+          class="slider3"
+          id="myRange3"
+        />
+      </div>
+
+      <script>
+        var slider3 = document.getElementById("myRange3");
+        var output3 = document.getElementById("demo3");
+        output3.innerHTML = slider3.value;
+        slider3.oninput = function () {
+          output3.innerHTML = this.value;
+        };
+      </script>
+
+      <button onclick="fetchItemsPage();" id="search_btn">Search</button>
+      <!--This button runs the javascript function that checks all of the parameters-->
     </div>
-      
-    <script>
-      var slider = document.getElementById("myRange"); //Gets the values that the user is putting in on the slider and defines them
-      var output = document.getElementById("demo");
-      output.innerHTML = (slider.value * 100); //The slider value will be in decimals because thats what it is on the table. This makes them whole numbers
-      
-      slider.oninput = function() {
-        output.innerHTML = this.value * 100; //This function outputs the constant value the slider is on to the webpage
-      }
-    </script>
-
-    <div class="slidecontainer2"> <!--This is the exact same thing just for a GPA requirnment. You input your GPA and see if you meet certain schools GPA requrinments-->
-        <input type="range" min="2" max="5" value="3.5" step=".01" class="slider2" id="myRange2">
-        <p>GPA (Your GPA): <span id="demo2"></span></p>
+    <div class="content-wrapper2">
+      <h2>Result:</h2>
+      <div id="results">
+      <p id="Match"></p>
+      <!--THis is where the matched colleges will display-->
+      <p id="Match2"></p>
+      </div>
     </div>
-      
-    <script>
-      var slider2 = document.getElementById("myRange2");
-      var output2 = document.getElementById("demo2");
-      output2.innerHTML = slider2.value;
-      
-      slider2.oninput = function() {
-        output2.innerHTML = this.value;
-      }
-    </script>
-
-    <div class="slidecontainer3"> <!--This is the same thing but for your SAT scores-->
-        <input type="range" min="1000" max="1600" value="1200" step="10" class="slider3" id="myRange3">
-        <p>SAT (Your SAT): <span id="demo3"></span></p>
-    </div>
-      
-    <script>
-      var slider3 = document.getElementById("myRange3");
-      var output3 = document.getElementById("demo3");
-      output3.innerHTML = slider3.value;
-      slider3.oninput = function() {
-        output3.innerHTML = this.value;
-      }
-    </script>
-
-
-    <button onclick="fetchItemsPage();">Search</button> <!--This button runs the javascript function that checks all of the parameters-->
-    <br>
-    <p id="Match"></p> <!--THis is where the matched colleges will display-->
-    <p id="Match2"></p>
-</body>
+  </body>
 </html>
