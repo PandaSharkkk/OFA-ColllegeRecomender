@@ -16,7 +16,7 @@
 
         const TABLE_URL = "https://api.airtable.com/v0/appo1y5AaYd3oeCyi/Colleges"; //Defining the link to the database we have setup
         const KEY_QUERY = "api_key=keyDhRLs1MlrCykL7"; //API key
-        const SUMMARY_QUERY = "fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
+        const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
         var itemList = [];
 
         function fetchItemsPage(itemResultElement, offset) {
@@ -24,23 +24,22 @@
                 .then(response => response.json()) //Makes the database into a array?
                 .then(data => {
                     console.log(data);//These 4 lines call the database and then display the data in the console
-
+                
+                var pictureLink = (data.records[collegeName].fields["Picture"]);
                 var Name = data.records[collegeName].fields["Name"]; //All of these are just defining collumn from our database as variables
                 var Location = data.records[collegeName].fields["Location"];
                 var GPA = (data.records[collegeName].fields["Average GPA"]);
                 var SAT = data.records[collegeName].fields["Average SAT"];
                 var Size = data.records[collegeName].fields["Size"];
                 var Setting = data.records[collegeName].fields["Campus setting"];
-                var Acceptance = (data.records[collegeName].fields["Acceptance Rate"]);
-
-                console.log(Name + Location + GPA + SAT + Size + Setting + Acceptance);
+                var Acceptance = (data.records[collegeName].fields["Acceptance Rate"]);              
                 
                 var templateinfo = "";
                 if (SAT == 0){
                     console.log("Test Blind")
                     var SAT = "Test Blind"
                 }
-                templateinfo += `<h2>${Name}</h2><br><p>Location: ${Location}</p><p>Average GPA: ${GPA}</p><p>Average SAT: ${SAT}</p><p>Size: ${Size}</p><p>Setting: ${Setting}</p><p>Acceptance Rate: ${Acceptance*100}%</p>`;
+                templateinfo += `<h2>${Name}</h2><br><p>Location: ${Location}</p><p>Average GPA: ${GPA}</p><p>Average SAT: ${SAT}</p><p>Size: ${Size}</p><p>Setting: ${Setting}</p><p>Acceptance Rate: ${Acceptance*100}%</p><img src="${pictureLink}"></img>`;
                 document.getElementById("collegeData").innerHTML = templateinfo
                     
 

@@ -1,6 +1,6 @@
 const TABLE_URL = "https://api.airtable.com/v0/appo1y5AaYd3oeCyi/Colleges"; //Defining the link to the database we have setup
 const KEY_QUERY = "api_key=keyDhRLs1MlrCykL7"; //API key
-const SUMMARY_QUERY = "fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
+const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
 var itemList = [];
 
 function fetchItemsPage(itemResultElement, offset) {
@@ -13,6 +13,7 @@ function fetchItemsPage(itemResultElement, offset) {
             var matchedColleges2 = "No colleges match your search";
 
             for (var p = 0; p < data.records.length; p++) { //Goes through every value in the database
+                var pictureLink = data.records[p].fields["Picture"];
                 var Name = data.records[p].fields["Name"]; //All of these are just defining collumn from our database as variables
                 var Location = data.records[p].fields["Location"];
                 var GPA = (data.records[p].fields["Average GPA"]);
