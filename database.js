@@ -62,6 +62,7 @@ function fetchItemsPage(itemResultElement, offset) {
 
             itemList = itemList.concat(data.records); //list the data
         });
+        document.getElementById("results").style.visibility = 'visible';
 }
 
 
