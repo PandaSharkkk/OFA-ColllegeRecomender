@@ -46,13 +46,14 @@ function fetchItemsPage(itemResultElement, offset) {
                     GPA <= selectedValue5 &&
                     SAT <= selectedValue6) { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
                     console.log(data.records[p].fields["Name"]); //Logs all of the names of the schools that matches the users preferences
-                    matchedColleges += data.records[p].fields["Name"] + "<br>"; // Add the users matched college names to the string                
+                    matchedColleges += `<a href="${data.records[p].fields["Name"]}.html">${data.records[p].fields["Name"]}</a><br>`; // Add the users matched college names to the string                
                     matchedColleges2 = "";
                 }
             }
             
             document.getElementById("Match").innerHTML = matchedColleges; // Display the list of matched colleges
             document.getElementById("Match2").innerHTML = matchedColleges2;
+
 
             if (data.offset) { //Applies to if their is 100 or more data points in the database
                 offset = `offset=${data.offset}`;
