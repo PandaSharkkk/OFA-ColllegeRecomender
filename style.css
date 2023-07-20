@@ -1,0 +1,28 @@
+body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.content-wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 960px;
+  text-align: center;
+}
+
+#title_heading {
+    margin-top: 300px;
+    margin-bottom: 75px;
+}
+
+#info_paragraph {
+    font-size: 20px;
+    margin-bottom: 75px;
+}
+
+#start_btn {
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    border: 2px solid;
+    border-radius: 7px;
+    font-size: 15px;
+}
