@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Unique College Website</title>
 </head>
 <body>
     <div id="collegeData">
@@ -11,12 +11,23 @@
     </div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const collegeName = urlParams.get('college');
+        const collegeName = urlParams.get('id');
+        console.log(collegeName);
+
+        const data1 = JSON.parse(sessionStorage.getItem("arr"));
+        console.log(data1);
+        
+        for (let i = 0; i < data1.length; i++) {
+            if (collegeName == i) {
+                var matched = data1[i];
+                console.log(matched);
+            }
+        }
 
 
         const TABLE_URL = "https://api.airtable.com/v0/appo1y5AaYd3oeCyi/Colleges"; //Defining the link to the database we have setup
         const KEY_QUERY = "api_key=keyDhRLs1MlrCykL7"; //API key
-        const SUMMARY_QUERY = "fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
+        const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
         var itemList = [];
 
         function fetchItemsPage(itemResultElement, offset) {
@@ -24,23 +35,38 @@
                 .then(response => response.json()) //Makes the database into a array?
                 .then(data => {
                     console.log(data);//These 4 lines call the database and then display the data in the console
+                                
+                for (var p = 0; p < data.records.length; p++) {
+                    var pictureLink = data.records[p].fields["Picture"];
+                    var Tuition = data.records[p].fields["Tuition"];
+                    var Name = data.records[p].fields["Name"]; //All of these are just defining collumn from our database as variables
+                    var Location = data.records[p].fields["Location"];
+                    var GPA = (data.records[p].fields["Average GPA"]);
+                    var SAT = data.records[p].fields["Average SAT"];
+                    var Size = data.records[p].fields["Size"];
+                    var Setting = data.records[p].fields["Campus setting"];
+                    var Acceptance = (data.records[p].fields["Acceptance Rate"]);
+                    if (Name == matched){
+                        console.log(p)
+                        var pictureLink2 = (data.records[p].fields["Picture"]);
+                        var Name2 = data.records[p].fields["Name"]; //All of these are just defining collumn from our database as variables
+                        var Location2 = data.records[p].fields["Location"];
+                        var GPA2 = (data.records[p].fields["Average GPA"]);
+                        var SAT2 = data.records[p].fields["Average SAT"];
+                        var Size2 = data.records[p].fields["Size"];
+                        var Setting2 = data.records[p].fields["Campus setting"];
+                        var Acceptance2 = (data.records[p].fields["Acceptance Rate"]);    
+                        console.log(Name2)
+                    }
+                }
 
-                var Name = data.records[collegeName].fields["Name"]; //All of these are just defining collumn from our database as variables
-                var Location = data.records[collegeName].fields["Location"];
-                var GPA = (data.records[collegeName].fields["Average GPA"]);
-                var SAT = data.records[collegeName].fields["Average SAT"];
-                var Size = data.records[collegeName].fields["Size"];
-                var Setting = data.records[collegeName].fields["Campus setting"];
-                var Acceptance = (data.records[collegeName].fields["Acceptance Rate"]);
-
-                console.log(Name + Location + GPA + SAT + Size + Setting + Acceptance);
                 
                 var templateinfo = "";
                 if (SAT == 0){
                     console.log("Test Blind")
                     var SAT = "Test Blind"
                 }
-                templateinfo += `<h2>${Name}</h2><br><p>Location: ${Location}</p><p>Average GPA: ${GPA}</p><p>Average SAT: ${SAT}</p><p>Size: ${Size}</p><p>Setting: ${Setting}</p><p>Acceptance Rate: ${Acceptance*100}%</p>`;
+                templateinfo += `<h2>${Name2}</h2><p>Location: ${Location2}</p><p>Average GPA: ${GPA2}</p><p>Average SAT: ${SAT2}</p><p>Size: ${Size2}</p><p>Setting: ${Setting2}</p><p>Acceptance Rate: ${Acceptance2*100}%</p><img src="${pictureLink2}"></img>`;
                 document.getElementById("collegeData").innerHTML = templateinfo
                     
 

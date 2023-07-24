@@ -9,29 +9,41 @@
 </head>
 <body>
     <div id=taskbar>
-            <a href="temp.html" id="book">
-                <img id=home src="book.png" alt="book" height="37">
-            </a> 
+        <a href="temp.html" id="book">
+            <img id=home src="book.png" alt="book" height="37">
+        </a> 
+
+        <box id="topText">College Recruiter</box>
     
-            <box id="topText">College Recruiter</box>
+    <a href="temp.html">
+        <img id=bookmark src="bookmark.png" alt="bookmark" height="33">
+    </a>    
+   
+    <a href="temp.html">
+        <img id=profile src="userIcon.png" alt="user" height="37">
+    </a>
+   
         
-        <a href="temp.html">
-            <img id=bookmark src="bookmark.png" alt="bookmark" height="33">
-        </a>    
-       
-        <a href="temp.html">
-            <img id=profile src="userIcon.png" alt="user" height="37">
-        </a>
-       
-            
-    </div>
+</div>
 
-    <h1>Your Best Matches !</h1>
+<h1>Your Best Matches !</h1>
+    <a id="results">
+    </a>
+    <script>
+        const data = JSON.parse(sessionStorage.getItem("arr"));
+        console.log(data);
+        const container = document.getElementById('results');
 
-    <div id="results">
-        <div id="result1">college 1</div>
-        <div id="result2">college 2</div>
-        <div id="result3">college 3</div>
-    </div>
+
+        data.forEach((item, index) => {
+            const linkNode = document.createElement('a');
+            linkNode.textContent = item;
+            container.appendChild(linkNode);
+            const urlWithParam = `${"template.html"}?id=${index}`; // Append the unique identifier as a query parameter
+            linkNode.href = urlWithParam;
+            container.appendChild(document.createElement('br')); // Add line break between links
+        });
+    </script>
+
 </body>
 </html>

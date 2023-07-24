@@ -99,7 +99,6 @@
           id="myRange3"
         />
       </div>
-
       <script>
         var slider3 = document.getElementById("myRange3");
         var output3 = document.getElementById("demo3");
@@ -108,8 +107,31 @@
           output3.innerHTML = this.value;
         };
       </script>
+      <div class="slidecontainer4"><!--This is the same thing but for schools all in tution-->
+        <p id="slider_options">Tution all in (Room and Board included): <span id="demo4"></span></p>
+        <input
+          type="range"
+          min="20000"
+          max="100000"
+          value="35000"
+          step="100"
+          class="slider4"
+          id="myRange4"
+        />
+      </div>
 
-      <button onclick="fetchItemsPage();" id="search_btn">Search</button>
+      <script>
+        var slider4 = document.getElementById("myRange4");
+        var output4 = document.getElementById("demo4");
+        output4.innerHTML = slider4.value;
+        slider4.oninput = function () {
+          output4.innerHTML = this.value;
+        };
+      </script>
+      <a href="matches.html">
+        <button onclick="fetchItemsPage();" id="search_btn">Search</button>
+      </a>
+
       <!--This button runs the javascript function that checks all of the parameters-->
     </div>
     <div class="content-wrapper2">
