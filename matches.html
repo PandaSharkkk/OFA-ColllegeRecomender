@@ -33,21 +33,7 @@
     <script>
         
         var data1 = JSON.parse(sessionStorage.getItem("arr"));
-        console.log(data1);
         var container = document.getElementById('results');
-
-
-        data1.forEach((item, index) => {
-            const linkNode = document.createElement('a');
-            linkNode.textContent = item;
-            container.appendChild(linkNode);
-            const urlWithParam = `${"template.html"}?id=${index}`; // Append the unique identifier as a query parameter
-            linkNode.href = urlWithParam;
-            container.appendChild(document.createTextNode("\u00A0\u00A0\u00A0\u00A0\u00A0")); // Add two more non-breaking spaces between links        
-        
-
-
-        });
 
         const TABLE_URL = "https://api.airtable.com/v0/appo1y5AaYd3oeCyi/Colleges"; //Defining the link to the database we have setup
         const KEY_QUERY = "api_key=keyDhRLs1MlrCykL7"; //API key
@@ -76,12 +62,31 @@
                         var Acceptance = (data.records[p].fields["Acceptance Rate"]);
                     }
 
-                    for (var i = 0; i < data1.length; i++){
-                        console.log(data1[i])
-                        if (Name == data1[i])
-                            console.log(i);
-                    }
+                    for (var i = 0; i < data1.length; i++){ 
+                        for (var p = 0; p < data.records.length; p++) {
+                            if (data.records[p].fields["Name"] == data1[i]){
+                                const collegeContainer = document.createElement("div"); // Create a container for each college
+                                collegeContainer.classList.add("college-container"); // Add the CSS class for styling
+                                
+                                const imgElement = document.createElement("img");
+                                imgElement.src = data.records[p].fields["Picture"];
+                                imgElement.classList.add("college-image"); // Add the CSS class for styling the image
+                                collegeContainer.appendChild(imgElement); // Append the image to the container
+                                
+                                const textElement = document.createElement('div'); // Create a separate element for the text
+                                textElement.classList.add("college-text"); // Add the CSS class for styling the text
+                                textElement.textContent = data.records[p].fields["Name"]; // Set the text content
+                                collegeContainer.appendChild(textElement); // Append the text to the container
 
+                                container.appendChild(collegeContainer); // Append the college container to the main container
+                                const collegeLink = document.createElement('a');
+                                collegeLink.href = `${"template.html"}?id=${i}`; // Set the link URL
+                                collegeLink.appendChild(collegeContainer); // Append the college container to the link
+                                container.appendChild(collegeLink); // Append the link to the main container
+ 
+                            }
+                        }
+                    }   
 
 
 
@@ -95,6 +100,30 @@
         }
         fetchItemsPage();
     </script>
-
+        <style>
+            /* CSS styling for the college container */
+            .college-container {
+                display: inline-block; /* Display containers next to each other */
+                text-align: center; /* Center the content inside each container */
+                margin: 10px; /* Add some margin around each college container */
+                width: 150px; /* Set the width of the college container */
+            }
+    
+            .college-image {
+                width: 100px; /* Set the width of the image */
+                height: 100px; /* Set the height of the image */
+                object-fit: cover; /* Crop the image to fit the container */
+                border-radius: 50%; /* Optional: Add a circular border to the image */
+            }
+    
+            .college-text {
+                background-color: rgba(0, 0, 0, 0.7); /* Optional: Add a background color for better visibility */
+                color: #fff; /* Optional: Set the text color */
+                padding: 5px; /* Optional: Add padding around the text */
+                border-bottom-left-radius: 50%; /* Optional: Create a circular border for the text */
+                border-bottom-right-radius: 50%; /* Optional: Create a circular border for the text */
+                cursor: pointer; /* Add cursor pointer to indicate the link */
+            }
+        </style>
 </body>
 </html>
