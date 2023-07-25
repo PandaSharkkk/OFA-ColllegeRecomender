@@ -27,7 +27,7 @@
 
         const TABLE_URL = "https://api.airtable.com/v0/appo1y5AaYd3oeCyi/Colleges"; //Defining the link to the database we have setup
         const KEY_QUERY = "api_key=keyDhRLs1MlrCykL7"; //API key
-        const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size"; //Defining and linking all of the collumns from our database
+        const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size&fields%5B%5D=Tuition"; //Defining and linking all of the collumns from our database
         var itemList = [];
 
         function fetchItemsPage(itemResultElement, offset) {
@@ -46,6 +46,7 @@
                     var Size = data.records[p].fields["Size"];
                     var Setting = data.records[p].fields["Campus setting"];
                     var Acceptance = (data.records[p].fields["Acceptance Rate"]);
+                    var Tuition = (data.records[p].fields["Tuition"])
                     if (Name == matched){
                         console.log(p)
                         var pictureLink2 = (data.records[p].fields["Picture"]);
@@ -55,7 +56,8 @@
                         var SAT2 = data.records[p].fields["Average SAT"];
                         var Size2 = data.records[p].fields["Size"];
                         var Setting2 = data.records[p].fields["Campus setting"];
-                        var Acceptance2 = (data.records[p].fields["Acceptance Rate"]);    
+                        var Acceptance2 = (data.records[p].fields["Acceptance Rate"]);  
+                        var Tuition2 = (data.records[p].fields["Tuition"])  
                         console.log(Name2)
                     }
                 }
@@ -66,7 +68,9 @@
                     console.log("Test Blind")
                     var SAT = "Test Blind"
                 }
-                templateinfo += `<h2>${Name2}</h2><p>Location: ${Location2}</p><p>Average GPA: ${GPA2}</p><p>Average SAT: ${SAT2}</p><p>Size: ${Size2}</p><p>Setting: ${Setting2}</p><p>Acceptance Rate: ${Acceptance2*100}%</p><img src="${pictureLink2}"></img>`;
+
+                console.log(Tuition);
+                templateinfo += `<h2>${Name2}</h2><p>Location: ${Location2}</p><p>Average GPA: ${GPA2}</p><p>Average SAT: ${SAT2}</p><p>Size: ${Size2}</p><p>Setting: ${Setting2}</p><p>Acceptance Rate: ${Acceptance2*100}%</p><p>Tuition (All in): ${Tuition2}</p><img src="${pictureLink2}"></img>`;
                 document.getElementById("collegeData").innerHTML = templateinfo
                     
 

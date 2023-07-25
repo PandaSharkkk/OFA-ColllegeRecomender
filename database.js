@@ -15,7 +15,7 @@ function fetchItemsPage(itemResultElement, offset) {
             
             for (var p = 0; p < data.records.length; p++) { //Goes through every value in the database
                 var pictureLink = data.records[p].fields["Picture"];
-                var Tuition = data.records[p].fields["Tuition"];
+                var Tuition = parseFloat(data.records[p].fields["Tuition"]);
                 var Name = data.records[p].fields["Name"]; //All of these are just defining collumn from our database as variables
                 var Location = data.records[p].fields["Location"];
                 var GPA = (data.records[p].fields["Average GPA"]);
@@ -51,20 +51,20 @@ function fetchItemsPage(itemResultElement, offset) {
                     (Setting == selectedValue3|| selectedValue3 == "N/A") &&
                     (Acceptance > selectedValue4) &&
                     (GPA <= selectedValue5) &&
-                    (SAT <= selectedValue6) &&
-                    (Tuition <= selectedValue7))
-                    { //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
+                    (SAT <= selectedValue6) && (Tuition <= selectedValue7)){ //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
                         arr.push(data.records[p].fields["Name"]);
                         console.log(arr);
+                        console.log(data.records[p].fields["Name"]);
+
                 }
                 
             }
+            var hello = "hello"
             
 
             sessionStorage.setItem("arr", JSON.stringify(arr));
-            
-            document.getElementById("Match").innerHTML = matchedColleges; // Display the list of matched colleges
-            document.getElementById("Match2").innerHTML = matchedColleges2;
+            sessionStorage.setItem("hello", JSON.stringify(hello));
+
 
 
             if (data.offset) { //Applies to if their is 100 or more data points in the database
@@ -73,8 +73,8 @@ function fetchItemsPage(itemResultElement, offset) {
             }
 
             itemList = itemList.concat(data.records); //list the data
-        });
-        document.getElementById("results").style.visibility = 'visible';
+            console.log("hello")
+    });
 }
 
 
