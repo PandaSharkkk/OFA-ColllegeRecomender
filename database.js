@@ -70,14 +70,8 @@ function fetchItemsPage(itemResultElement, offset) {
             itemList = itemList.concat(data.records); //list the data
             console.log("hello")
 
+    }).then(() => {
+        window.location.href="matches.html";
     });
-    
-
-    // window.location.href="matches.html";
-
 }
 
-
-
-
-fetchItemsPage();

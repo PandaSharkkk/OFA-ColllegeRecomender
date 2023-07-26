@@ -101,25 +101,11 @@
         slider4.oninput = function () {
           output4.innerHTML = this.value;
         };
-      
-      function nextpage(){
-
-        window.location.href="matches.html";
-
-      }
 
       </script>
 
-  <button onclick="fetchItemsPageAndNavigate()" id="search_btn">Search</button>
+  <button onclick="fetchItemsPage()" id="search_btn">Search</button>
   
-  <script>
-    function fetchItemsPageAndNavigate() {
-      fetchItemsPage();
-      location.refresh();
-      nextpage();
-    }
-    // The rest of your JavaScript code...
-  </script>
 
       
       <!--This button runs the javascript function that checks all of the parameters-->

@@ -125,9 +125,13 @@
                 cursor: pointer; /* Add cursor pointer to indicate the link */
             }
         </style>
-    <a href="preferences.html">
-        <button id="backButton">Go Back</button>
-    </a>
+
+        <button onclick="goback()" id="backButton">Go Back</button>
+        <script>
+            function goback(){
+                window.location.href="preferences.html"
+            }
+        </script>
     
 </body>
 </html>
