@@ -21,11 +21,11 @@
         <option>Central Cal</option>
         <option>N/A</option>
       </select>
-      <select id="Size">
+      <select id="Size" >
         <!--Same as above just for size of the school-->
-        <option>Small (Less than 2500)</option>
-        <option>Medium (2500-15000)</option>
         <option>Large (15000+)</option>
+        <option>Medium (2500-15000)</option>
+        <option>Small (Less than 2500)</option>
         <option>N/A</option>
       </select>
       <select id="Setting">
@@ -35,33 +35,6 @@
         <option>College Town</option>
         <option>N/A</option>
       </select>
-
-      <div class="slidecontainer">
-        <!--Creates a sliding for the maximum acceptance rate at a school ie if I want a school with a 50% acceptance rate it will give me all the schools that are at max a 50% acceptance-->
-        <p id="acceptance_text slider_options">
-          Acceptance Rate (Max): <span id="demo"></span>
-        </p>
-        <input
-          type="range"
-          min="0"
-          max="1"
-          value=".5"
-          step=".01"
-          class="slider"
-          id="myRange"
-        />
-      </div>
-
-      <script>
-        var slider = document.getElementById("myRange"); //Gets the values that the user is putting in on the slider and defines them
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value * 100; //The slider value will be in decimals because thats what it is on the table. This makes them whole numbers
-
-        slider.oninput = function () {
-          output.innerHTML = this.value * 100; //This function outputs the constant value the slider is on to the webpage
-        };
-      </script>
-
       <div class="slidecontainer2">
         <!--This is the exact same thing just for a GPA requirnment. You input your GPA and see if you meet certain schools GPA requrinments-->
         <p id="slider_options">GPA (Your GPA): <span id="demo2"></span></p>
@@ -107,6 +80,7 @@
           output3.innerHTML = this.value;
         };
       </script>
+
       <div class="slidecontainer4"><!--This is the same thing but for schools all in tution-->
         <p id="slider_options">Tution all in (Room and Board included): <span id="demo4"></span></p>
         <input
@@ -127,11 +101,27 @@
         slider4.oninput = function () {
           output4.innerHTML = this.value;
         };
-      </script>
-      <a href="matches.html">
-        <button onclick="fetchItemsPage();" id="search_btn">Search</button>
-      </a>
+      
+      function nextpage(){
 
+        window.location.href="matches.html";
+
+      }
+
+      </script>
+
+  <button onclick="fetchItemsPageAndNavigate()" id="search_btn">Search</button>
+  
+  <script>
+    function fetchItemsPageAndNavigate() {
+      fetchItemsPage();
+      location.refresh();
+      nextpage();
+    }
+    // The rest of your JavaScript code...
+  </script>
+
+      
       <!--This button runs the javascript function that checks all of the parameters-->
   </body>
 </html>

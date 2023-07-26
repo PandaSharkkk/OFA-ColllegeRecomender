@@ -33,9 +33,6 @@ function fetchItemsPage(itemResultElement, offset) {
                 var selectElement3 = document.getElementById("Setting");
                 var selectedValue3 = selectElement3.value;
 
-                var selectElement4 = document.getElementById("myRange");
-                var selectedValue4 = (selectElement4.value);
-
                 var selectElement5 = document.getElementById("myRange2");
                 var selectedValue5 = (selectElement5.value);
 
@@ -49,7 +46,6 @@ function fetchItemsPage(itemResultElement, offset) {
                 if((selectedValue == "N/A" || Location == selectedValue) &&
                     (Size == selectedValue2 || selectedValue2 == "N/A") &&
                     (Setting == selectedValue3|| selectedValue3 == "N/A") &&
-                    (Acceptance > selectedValue4) &&
                     (GPA <= selectedValue5) &&
                     (SAT <= selectedValue6) && (Tuition <= selectedValue7)){ //Checks every single collumn for the users selected value ie. if the user selects medium size schools it checks for all medium size schools
                         arr.push(data.records[p].fields["Name"]);
@@ -59,11 +55,10 @@ function fetchItemsPage(itemResultElement, offset) {
                 }
                 
             }
-            var hello = "hello"
+            var hello = ""
             
 
-            sessionStorage.setItem("arr", JSON.stringify(arr));
-            sessionStorage.setItem("hello", JSON.stringify(hello));
+            localStorage.setItem("arr", JSON.stringify(arr));
 
 
 
@@ -74,8 +69,14 @@ function fetchItemsPage(itemResultElement, offset) {
 
             itemList = itemList.concat(data.records); //list the data
             console.log("hello")
+
     });
+    
+
+    // window.location.href="matches.html";
+
 }
+
 
 
 

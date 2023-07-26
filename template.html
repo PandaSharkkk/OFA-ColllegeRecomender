@@ -14,7 +14,7 @@
         const collegeName = urlParams.get('id');
         console.log(collegeName);
 
-        const data1 = JSON.parse(sessionStorage.getItem("arr"));
+        const data1 = JSON.parse(localStorage.getItem("arr"));
         console.log(data1);
         
         for (let i = 0; i < data1.length; i++) {
@@ -30,7 +30,7 @@
         const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size&fields%5B%5D=Tuition"; //Defining and linking all of the collumns from our database
         var itemList = [];
 
-        function fetchItemsPage(itemResultElement, offset) {
+        function fetchItemsPage3(itemResultElement, offset) {
             fetch(`${TABLE_URL}?${KEY_QUERY}&${SUMMARY_QUERY}&${offset}`)
                 .then(response => response.json()) //Makes the database into a array?
                 .then(data => {
@@ -77,7 +77,7 @@
 
                     if (data.offset) { //Applies to if their is 100 or more data points in the database
                         offset = `offset=${data.offset}`;
-                        fetchItemsPage(itemResultElement, offset);
+                        fetchItemsPage3(itemResultElement, offset);
                     }
 
                     itemList = itemList.concat(data.records); //list the data
@@ -86,7 +86,7 @@
 
 
 
-fetchItemsPage();
+fetchItemsPage3();
 
 
 
