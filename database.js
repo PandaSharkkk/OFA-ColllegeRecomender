@@ -56,6 +56,9 @@ function fetchItemsPage(itemResultElement, offset) {
                 
             }
             var hello = ""
+            if (arr.length === 0) {
+                arr.push("No colleges match your search");
+            }
             
 
             localStorage.setItem("arr", JSON.stringify(arr));

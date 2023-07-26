@@ -27,8 +27,8 @@
 </div>
 
 <h1>Your Best Matches !</h1>
-    <p id="results">
-    </p>
+<button onclick="goback()" id="backButton">Go Back</button>
+    <p id="results"></p>
 
     <script>
         
@@ -85,6 +85,9 @@
                                 container.appendChild(collegeLink); // Append the link to the main container
  
                             }
+                            else if (data1[i] == "No colleges match your search"){
+                                var none = "No collges match your search."
+                                document.getElementById("results").innerHTML = none;                            }
                         }
                     }   
 
@@ -126,7 +129,7 @@
             }
         </style>
 
-        <button onclick="goback()" id="backButton">Go Back</button>
+
         <script>
             function goback(){
                 window.location.href="preferences.html"
