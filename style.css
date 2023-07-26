@@ -34,9 +34,9 @@
 }
 
 #topText {
-    padding-bottom: 100px;
-    position: relative;
-    top:0px;
+    /* padding-bottom: 100px; */
+    /* position: relative;
+    top:0px; */
     
     position: absolute;
     top: 22px;
@@ -71,7 +71,7 @@
     text-decoration: none;
 }
 h1 {
-    /* border-bottom: 1.25px solid; */
+    border-bottom: 1.25px solid;
     font-size: 22px;
     padding: 2.5px;
 
