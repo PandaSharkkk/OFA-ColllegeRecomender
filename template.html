@@ -6,9 +6,39 @@
     <title>Unique College Website</title>
 </head>
 <body>
-    <div id="collegeData">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 0;
+        }
+        .content-container {
+            text-align: center;
+            width: 700px; /* Set the desired width of the container */
+            height: 650px; /* Set the desired height of the container */
+        }
+        .content-container img {
+            width: 100%; /* Make the image fill the container width */
+            height: 100%; /* Make the image fill the container height */
+            object-fit: cover; /* Crop the image to fill the container */
+        }
+        #backButton{
+            position:absolute;
+            top:2.5%;
+            left:1.5%
+        }
+    </style>
+    <button onclick="goback()" id="backButton">Go Back</button>
+    <script>
+                function goback(){
+                    window.location.href="matches.html"
+                }
+    </script>
 
-    </div>
+        <div class="content-container" id="collegeData"></div>
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const collegeName = urlParams.get('id');
@@ -29,6 +59,7 @@
         const KEY_QUERY = "api_key=keyDhRLs1MlrCykL7"; //API key
         const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size&fields%5B%5D=Tuition"; //Defining and linking all of the collumns from our database
         var itemList = [];
+        var pictureLink2 = ""
 
         function fetchItemsPage3(itemResultElement, offset) {
             fetch(`${TABLE_URL}?${KEY_QUERY}&${SUMMARY_QUERY}&${offset}`)
@@ -70,9 +101,27 @@
                 }
 
                 console.log(Tuition);
-                templateinfo += `<h2>${Name2}</h2><p>Location: ${Location2}</p><p>Average GPA: ${GPA2}</p><p>Average SAT: ${SAT2}</p><p>Size: ${Size2}</p><p>Setting: ${Setting2}</p><p>Acceptance Rate: ${Acceptance2*100}%</p><p>Tuition (All in): ${Tuition2}</p><img src="${pictureLink2}"></img>`;
+                templateinfo += `<h2>${Name2}</h2><p>Location: ${Location2}</p><p>Average GPA: ${GPA2}</p><p>Average SAT: ${SAT2}</p><p>Size: ${Size2}</p><p>Setting: ${Setting2}</p><p>Acceptance Rate: ${Acceptance2*100}%</p><p>Tuition (All in): ${Tuition2}</p>`;
                 document.getElementById("collegeData").innerHTML = templateinfo
-                    
+                
+                function displayImage(imageURL) {
+                        // Create a new image element
+                        var img = document.createElement("img");
+                        
+                        // Set the src attribute to the image URL
+                        img.src = imageURL;
+
+                        // Apply the cropping styles to the image
+                        img.style.width = "100%";
+                        img.style.height = "100%";
+                        img.style.objectFit = "cover";
+
+                        // Append the image to the container with id "collegeData"
+                        var container = document.getElementById("collegeData");
+                        container.appendChild(img);
+                }
+                console.log(pictureLink2)
+                displayImage(pictureLink2);
 
 
                     if (data.offset) { //Applies to if their is 100 or more data points in the database
@@ -87,6 +136,7 @@
 
 
 fetchItemsPage3();
+
 
 
 
