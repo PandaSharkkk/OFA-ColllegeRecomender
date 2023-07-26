@@ -32,7 +32,7 @@
 
     <script>
         
-        var data1 = JSON.parse(sessionStorage.getItem("arr"));
+        var data1 = JSON.parse(localStorage.getItem("arr"));
         var container = document.getElementById('results');
 
         const TABLE_URL = "https://api.airtable.com/v0/appo1y5AaYd3oeCyi/Colleges"; //Defining the link to the database we have setup
@@ -40,7 +40,7 @@
         const SUMMARY_QUERY = "fields%5B%5D=Picture&fields%5B%5D=Name&fields%5B%5D=Location&fields%5B%5D=Average%20GPA&fields%5B%5D=Average%20SAT&fields%5B%5D=Campus%20setting&fields%5B%5D=Acceptance%20Rate&fields%5B%5D=Size&fields%5B%5D=Tuition"; //Defining and linking all of the collumns from our database
         var itemList = [];
 
-        function fetchItemsPage(itemResultElement, offset) {
+        function fetchItemsPage2(itemResultElement, offset) {
             fetch(`${TABLE_URL}?${KEY_QUERY}&${SUMMARY_QUERY}&${offset}`)
                 .then(response => response.json()) //Makes the database into a array?
                 .then(data => {
@@ -92,13 +92,13 @@
 
                     if (data.offset) { //Applies to if their is 100 or more data points in the database
                         offset = `offset=${data.offset}`;
-                        fetchItemsPage(itemResultElement, offset);
+                        fetchItemsPage2(itemResultElement, offset);
                     }
 
                     itemList = itemList.concat(data.records); //list the data
                 });
         }
-        fetchItemsPage();
+        fetchItemsPage2();
     </script>
         <style>
             /* CSS styling for the college container */
@@ -125,5 +125,9 @@
                 cursor: pointer; /* Add cursor pointer to indicate the link */
             }
         </style>
+    <a href="preferences.html">
+        <button id="backButton">Go Back</button>
+    </a>
+    
 </body>
 </html>
