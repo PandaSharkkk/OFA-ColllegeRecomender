@@ -1,4 +1,5 @@
-#taskbar {
+
+#taskbar2 {
     border: 0.5px solid;
     width: 1340px;
     height: 40px;
@@ -15,6 +16,7 @@
 
     font-family: "Press Start 2P", "consolas", sans-serif;
 }
+
 #home {
     padding: 1.5px; 
     height : 38px;
@@ -48,24 +50,45 @@
 
     position: absolute;
     top: 22px;
-    left: 1250px;
+    left: 1230px;
     display:inline;
 }
 #bookmark:hover {
     background-color: lightblue;
 }
-#profile {
-    width: 38px;
-    height: 38px;
-  
+#bookmark2 {
+
     position: absolute;
-    top: 20px;
-    left: 1295px;
+    top: 22px;
+    left: 1430px;
     display:inline;
+}
+#bookmark2:hover {
+    background-color: lightblue;
+}
+
+#profile {
+    width: 70px;
+    height: 38px;
+    top: 20px;
+    position:absolute;
+    left: 1275px;
 }
 #profile:hover {
     background-color: lightblue;
 }
+
+#profile2 {
+    width: 38px;
+    height: 38px;
+    top: 20px;
+    position:absolute;
+    left: 1475px;
+}
+#profile2:hover {
+    background-color: lightblue;
+}
+
 #book {
     text-decoration: none;
 }
@@ -77,45 +100,9 @@ h1 {
     padding: 2.5px;
 
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
 
     font-family: "Press Start 2P", "consolas", sans-serif;
-}
-
-#result1 {
-    border: 1px solid;
-    height: 350px;
-    width: 350px;
-    background-color: lightcoral;
-
-    position: absolute;
-    top: 150px;
-    left: 120px;
-    display:inline;
-}
-#result2 {
-    border: 1px solid;
-    height: 350px;
-    width: 350px;
-    background-color: lightcoral;
-
-    position: absolute;
-    top: 150px;
-    left: 490px;
-    display:inline;
-}
-#result3 {
-    border: 1px solid;
-    height: 350px;
-    width: 350px;
-    background-color: lightcoral;
-
-    position: absolute;
-    top: 150px;
-    left: 860px;
-    display:inline;
 }
 
 p{
@@ -131,5 +118,6 @@ p{
 #result3:hover {
     background-color: antiquewhite;
 }
+
 
 
