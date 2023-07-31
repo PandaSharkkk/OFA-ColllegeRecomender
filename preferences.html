@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preferences</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="matches.css">
   </head>
   <body>
+    <div id=taskbar1>
+      <a href="temp.html" id="book">
+          <img id=home src="book.png" alt="book" height="37">
+      </a> 
+
+      <box id="topText">College Recruiter</box>
+  
+      <a href="temp.html">
+          <img id=bookmark2 src="bookmark.png" alt="bookmark" height="33">
+      </a>    
+    
+      <a href="temp.html">
+          <img id=profile2 src="userIcon.png" alt="user" height="37">
+      </a>
+    
+          
+    </div>
     <script src="database.js"></script>
     <!--links the script-->
     <div class="content-wrapper">
@@ -36,8 +54,7 @@
         <option>N/A</option>
       </select>
       <div class="slidecontainer2">
-        <!--This is the exact same thing just for a GPA requirnment. You input your GPA and see if you meet certain schools GPA requrinments-->
-        <p id="slider_options">GPA (Your GPA): <span id="demo2"></span></p>
+        <p class="slider-text">GPA (Your GPA): <span id="demo2"></span></p>
         <input
           type="range"
           min="2"
@@ -48,7 +65,7 @@
           id="myRange2"
         />
       </div>
-
+    
       <script>
         var slider2 = document.getElementById("myRange2");
         var output2 = document.getElementById("demo2");
@@ -60,13 +77,12 @@
       </script>
 
       <div class="slidecontainer3">
-        <!--This is the same thing but for your SAT scores-->
-        <p id="slider_options">SAT (Your SAT): <span id="demo3"></span></p>
+        <p class="slider-text">SAT (Your SAT): <span id="demo3"></span></p>
         <input
           type="range"
           min="1000"
           max="1600"
-          value="1450"
+          value="1400"
           step="10"
           class="slider3"
           id="myRange3"
@@ -82,7 +98,7 @@
       </script>
 
       <div class="slidecontainer4"><!--This is the same thing but for schools all in tution-->
-        <p id="slider_options">Tution all in (Room and Board included): <span id="demo4"></span></p>
+        <p class="slider-text">Tution all in (Room and Board included): <span id="demo4"></span></p>
         <input
           type="range"
           min="20000"
