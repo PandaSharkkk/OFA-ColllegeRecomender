@@ -6,7 +6,7 @@
   background: rgb(0, 145, 194);
   padding: 2.5px;
   float : left;
-  width: 1510px; /* Adjusted width to fit the content and avoid overflow */
+  width: 100%; /* Adjusted width to fit the content and avoid overflow */
 
   margin-bottom: 20px;
   margin-left: auto;
