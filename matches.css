@@ -1,7 +1,7 @@
 
 #taskbar2 {
     border: 0.5px solid;
-    width: 1340px;
+    width: 100%;
     height: 40px;
     font-size: 28px;
     background: rgb(0, 145, 194);
@@ -50,7 +50,7 @@
 
     position: absolute;
     top: 22px;
-    left: 1230px;
+    right: 5px;
     display:inline;
 }
 #bookmark:hover {
@@ -60,7 +60,7 @@
 
     position: absolute;
     top: 22px;
-    left: 1430px;
+    right: 65px;
     display:inline;
 }
 #bookmark2:hover {
@@ -72,7 +72,7 @@
     height: 38px;
     top: 20px;
     position:absolute;
-    left: 1275px;
+    right: 45px;
 }
 #profile:hover {
     background-color: lightblue;
